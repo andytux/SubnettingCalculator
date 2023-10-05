@@ -52,8 +52,5 @@ namespace SubnettingCalculator.Models
 
             return broadCast;
         }
-
-
-
     }
 }
