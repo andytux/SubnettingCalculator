@@ -8,12 +8,18 @@ namespace SubnettingCalculator.Models;
 
 public class Subnetmask : BaseAddress
 {
-    int CidrSuffix { get; set; }
+    public int CidrSuffix { get; set; }
 
     public Subnetmask(byte[] octets)
     {
         Octets = octets;
         CidrSuffix = GetSuffix(octets);
+    }
+
+    public Subnetmask(byte[] octets, int cidrSuffix)
+    {
+        Octets = octets;
+        CidrSuffix = cidrSuffix; 
     }
     public Subnetmask(string octets)
     {
@@ -23,7 +29,7 @@ public class Subnetmask : BaseAddress
     
     public static byte[] GetByteOfInt (int suffix)
     {
-        if (suffix < 8|| suffix > 30) { throw new ArgumentOutOfRangeException; }
+        if (suffix < 8|| suffix > 30) { throw new ArgumentOutOfRangeException(); }
         int count = 0;
         int j = 0;
         string bytes = "";
@@ -94,6 +100,17 @@ public class Subnetmask : BaseAddress
         {
             throw new ArgumentOutOfRangeException();
         }
+    }
+
+    public static Subnetmask operator ~(Subnetmask snm)
+    {
+        byte[] result = new byte[4];
+
+        for (int i = 0; i < 4; i++)
+        {
+            result[i] = (byte)~snm.Octets[i];
+        }
+        return new Subnetmask(result, 0);
     }
 }
 

@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubnettingCalculator.Models", "SubnettingCalculator.Models\SubnettingCalculator.Models.csproj", "{9ED8707C-B9DD-49C6-8C52-E2668DAE8685}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubnettingCalculator.Models", "SubnettingCalculator.Models\SubnettingCalculator.Models.csproj", "{9ED8707C-B9DD-49C6-8C52-E2668DAE8685}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubnettingCalculator.Models.Tests", "SubnettingCalculator.Models.Tests\SubnettingCalculator.Models.Tests.csproj", "{37195D02-8427-42C0-983C-6675BCA4BC3B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SubnettingCalculator.Models.Tests", "SubnettingCalculator.Models.Tests\SubnettingCalculator.Models.Tests.csproj", "{37195D02-8427-42C0-983C-6675BCA4BC3B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubnettingCalculater.View", "SubnettingCalculater.View\SubnettingCalculater.View.csproj", "{83104811-5258-48C8-A5DC-A286D10DE2F6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SubnettingCalculator.ViewModels", "SubnettingCalculator.ViewModels\SubnettingCalculator.ViewModels.csproj", "{31500A24-F96C-4A63-BF0F-08EBCBFCA656}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{37195D02-8427-42C0-983C-6675BCA4BC3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37195D02-8427-42C0-983C-6675BCA4BC3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37195D02-8427-42C0-983C-6675BCA4BC3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83104811-5258-48C8-A5DC-A286D10DE2F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83104811-5258-48C8-A5DC-A286D10DE2F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83104811-5258-48C8-A5DC-A286D10DE2F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83104811-5258-48C8-A5DC-A286D10DE2F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31500A24-F96C-4A63-BF0F-08EBCBFCA656}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31500A24-F96C-4A63-BF0F-08EBCBFCA656}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31500A24-F96C-4A63-BF0F-08EBCBFCA656}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31500A24-F96C-4A63-BF0F-08EBCBFCA656}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
