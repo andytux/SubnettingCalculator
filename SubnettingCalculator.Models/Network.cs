@@ -8,49 +8,33 @@ using System.Threading.Tasks;
 namespace SubnettingCalculator.Models
 {
     
-    public  class Network
+    public class Network
     {
-        private byte[] ipAddress {  get; set; }
-        private byte[] subnetmask { get; set; }
+        public IpAddress IpAddress { get; init; }
+        public Subnetmask Subnetmask { get; init; }
+        public IpAddress NetID { get; init; }
+        public IpAddress BroadCast { get; init; }
+        public IpAddress FirstHost { get; init; }
+        public IpAddress LastHost { get; init; }
+        public int SumHosts { get; init; }
 
-        public Network(byte[] ipAddress, byte[] subnetmask)
+        public Network(IpAddress ipAddress, Subnetmask subnetmask)
         {
-            this.ipAddress = ipAddress;
-            this.subnetmask = subnetmask;
+            IpAddress = ipAddress;
+            Subnetmask = subnetmask;
+
+            NetID = ipAddress & subnetmask;
+            BroadCast = NetID | ~subnetmask;
+            FirstHost = NetID + 1;
+            LastHost = BroadCast - 1;
+            SumHosts = (int)Math.Pow(2,32 - Subnetmask.CidrSuffix)-2;
+
         }
 
-        public static byte[] CalculateNetId(byte[] ipAddress, byte[] subnetMask)
-        {
-            if (ipAddress.Length != 4 || subnetMask.Length != 4)
-            {
-                throw new ArgumentException("IP-Adresse und Subnetzmaske müssen jeweils 4 Bytes lang sein.");
-            }
-
-            byte[] netId = new byte[4];
-
-            for (int i = 0; i < 4; i++)
-            {
-                netId[i] = (byte)(ipAddress[i] & subnetMask[i]);
-            }
-
-            return netId;
-        }
         
-        public static byte[] CalculateBroadCast(byte[] netId, byte[] subnetMask)
-        {
-            if (netId.Length != 4 || subnetMask.Length != 4)
-            {
-                throw new ArgumentException("NetID-Adresse und Subnetzmaske müssen jeweils 4 Bytes lang sein.");
-            }
+        
+     
 
-            byte[] broadCast = new byte[4];
-
-            for (int i = 0; i < 4; i++)
-            {
-                broadCast[i] = (byte)(netId[i] | ~subnetMask[i]);
-            }
-
-            return broadCast;
-        }
+     
     }
 }

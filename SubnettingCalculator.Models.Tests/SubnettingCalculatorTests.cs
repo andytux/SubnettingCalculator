@@ -66,26 +66,6 @@ namespace SubnettingCalculator.Models.Tests
             byte[] result = Subnetmask.GetByteOfInt(suffix);
             Assert.That(result, Is.EqualTo(expected));
         }
-
-        [TestCase(new byte[] {192, 168, 10, 15}, new byte[] {255, 255, 255, 0}, new byte[] {192, 168, 10, 0})]
-        public void CalculateNetID_NTest(byte[] ipAddress, byte[] subnetMask, byte[] expected)
-        {
-            byte[] result = Network.CalculateNetId(ipAddress, subnetMask);
-
-            Assert.That(result, Is.EqualTo(expected));
-        }
-        
-        [TestCase(new byte[] {192, 168, 10, 0}, new byte[] {255, 255, 255, 0}, new byte[] {192, 168, 10, 255})]
-        public void CalculateBroadCast_NTest(byte[] netId, byte[] subnetMask, byte[] expected)
-        {
-            byte[] result = Network.CalculateBroadCast(netId, subnetMask);
-
-            Assert.That(result, Is.EqualTo(expected));
-        }
-
-
-
-
     }
 
 }
