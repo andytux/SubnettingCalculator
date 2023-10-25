@@ -25,8 +25,7 @@
             <Button Content="Subnetting"
                     Margin="10"
                     Command="{Binding SubnettingViewCommand}"/>
-            
-           
+                       
         </StackPanel>
         <ContentControl Grid.Column="1"
                         Margin="10"

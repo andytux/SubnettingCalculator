@@ -6,27 +6,63 @@ using System.Threading.Tasks;
 
 namespace SubnettingCalculator.Models;
 
-public class Subnetmask : BaseAddress
+public class SubnetMask : BaseAddress
 {
     public int CidrSuffix { get; set; }
 
-    public Subnetmask(byte[] octets)
+    public SubnetMask(byte[] octets)
     {
         Octets = octets;
         CidrSuffix = GetSuffix(octets);
     }
 
-    public Subnetmask(byte[] octets, int cidrSuffix)
+    public SubnetMask(byte[] octets, int cidrSuffix)
     {
         Octets = octets;
         CidrSuffix = cidrSuffix; 
     }
-    public Subnetmask(string octets)
+    public SubnetMask(string octets)
     {
         Octets = base.OctetsStringToByteArray(octets);
         CidrSuffix = GetSuffix(Octets);
     }
-    
+    public SubnetMask(int cidrSuffix)
+    {
+        Octets = ConvertCidrSuffixToOctets(cidrSuffix);
+        CidrSuffix = cidrSuffix;
+    }
+
+    public static byte[] ConvertCidrSuffixToOctets(int cidrSuffix)
+    {
+        // Throw ArgumentOutOfRangeException for invalid suffix
+        if (cidrSuffix < 1 || cidrSuffix > 30)
+            throw new ArgumentOutOfRangeException(nameof(cidrSuffix), "Invalid Suffix. Suffix must be greater than 0 and smaller than 31.");
+
+        // construct the binary string:
+        string binarySuffix = string.Empty;
+
+        // add as many '1's as cidrSuffix
+        for (int i = 0; i < cidrSuffix; i++)
+        {
+            binarySuffix += "1";
+        }
+        // fill up with '0's till string length is 32
+        for (int i = 0; i < 32 - cidrSuffix; i++)
+        {
+            binarySuffix += "0";
+        }
+
+        // convert binary string to byte[]:
+        byte[] result = new byte[4];
+
+        for (int i = 0; i < 4; i++)
+        {
+            result[i] = Convert.ToByte(binarySuffix.Substring(8 * i, 8), 2);
+        }
+
+        return result;
+    }
+
     public static byte[] GetByteOfInt (int suffix)
     {
         if (suffix < 8|| suffix > 30) { throw new ArgumentOutOfRangeException(); }
@@ -102,7 +138,7 @@ public class Subnetmask : BaseAddress
         }
     }
 
-    public static Subnetmask operator ~(Subnetmask snm)
+    public static SubnetMask operator ~(SubnetMask snm)
     {
         byte[] result = new byte[4];
 
@@ -110,7 +146,7 @@ public class Subnetmask : BaseAddress
         {
             result[i] = (byte)~snm.Octets[i];
         }
-        return new Subnetmask(result, 0);
+        return new SubnetMask(result, 0);
     }
 }
 

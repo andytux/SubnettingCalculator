@@ -21,7 +21,7 @@ namespace SubnettingCalculator.Models.Tests
         [TestCase(new byte[] { 255, 0, 255, 0 })]
         public void Invalid_GetSuffixOfSNM(byte[] input)
         {
-            Assert.Throws<ArgumentOutOfRangeException>(() => Subnetmask.GetSuffix(input));
+            Assert.Throws<ArgumentOutOfRangeException>(() => SubnetMask.GetSuffix(input));
         }            
             
         [TestCase(new byte[] { 255, 255, 255, 0 }, 24)]
@@ -29,7 +29,7 @@ namespace SubnettingCalculator.Models.Tests
         [TestCase(new byte[] { 255, 0, 0, 0 }, 8)]
         public void GetSuffix_NTest(byte[] input, int expected)
         {
-            int result = Subnetmask.GetSuffix(input);
+            int result = SubnetMask.GetSuffix(input);
 
             Assert.That(result, Is.EqualTo(expected));
         }
@@ -38,7 +38,7 @@ namespace SubnettingCalculator.Models.Tests
         [TestCase(new byte[] { 255, 0, 255, 0 })]
         public void Invalid_SNM(byte[] input)
         {
-            Assert.Throws<ArgumentOutOfRangeException>(() => Subnetmask.InvalidSuffix(input));
+            Assert.Throws<ArgumentOutOfRangeException>(() => SubnetMask.InvalidSuffix(input));
         }
 
         [TestCase("192.168.0.1", new byte[] {192, 168, 0, 1})]
@@ -63,7 +63,7 @@ namespace SubnettingCalculator.Models.Tests
         [TestCase(24, new byte[] {255,255,255,0})]
         public void GetByteOfIntTest(int suffix, byte[] expected)
         {
-            byte[] result = Subnetmask.GetByteOfInt(suffix);
+            byte[] result = SubnetMask.GetByteOfInt(suffix);
             Assert.That(result, Is.EqualTo(expected));
         }
     }

@@ -15,7 +15,7 @@ namespace SubnettingCalculator.Models.Tests
         public void NetIDTest(byte[] ipAddress, byte[] subnetmask, byte[] expected)
         {
             IpAddress ip = new IpAddress(ipAddress);
-            Subnetmask snm = new Subnetmask(subnetmask);
+            SubnetMask snm = new SubnetMask(subnetmask);
             
             Network network = new Network(ip, snm);
             Assert.That(network.NetID.Octets, Is.EqualTo(expected));
@@ -28,7 +28,7 @@ namespace SubnettingCalculator.Models.Tests
         public void BroadCastTest(byte[] ip, byte[] subnetmask, byte[] expected)
         {
             IpAddress ipAdress = new IpAddress(ip);
-            Subnetmask snm = new Subnetmask(subnetmask);
+            SubnetMask snm = new SubnetMask(subnetmask);
 
             Network network = new Network(ipAdress, snm);
             Assert.That(network.BroadCast.Octets, Is.EqualTo(expected));
@@ -40,7 +40,7 @@ namespace SubnettingCalculator.Models.Tests
         public void FirstIPTest(byte[] ip, byte[] subnetmask, byte[] expected)
         {
             IpAddress ipAdress = new IpAddress(ip);
-            Subnetmask snm = new Subnetmask(subnetmask);
+            SubnetMask snm = new SubnetMask(subnetmask);
 
 
             Network network = new Network(ipAdress, snm);
@@ -52,7 +52,7 @@ namespace SubnettingCalculator.Models.Tests
         public void LastIPTest(byte[] ip, byte[] subnetmask, byte[] expected)
         {
             IpAddress ipAdress = new IpAddress(ip);
-            Subnetmask snm = new Subnetmask(subnetmask);
+            SubnetMask snm = new SubnetMask(subnetmask);
 
 
             Network network = new Network(ipAdress, snm);
@@ -65,7 +65,7 @@ namespace SubnettingCalculator.Models.Tests
         public void SumOfHosts(byte[] ip, byte[] subnetmask,int expected)
         {
             IpAddress ipAdress = new IpAddress(ip);
-            Subnetmask snm = new Subnetmask(subnetmask);
+            SubnetMask snm = new SubnetMask(subnetmask);
 
 
             Network network = new Network(ipAdress, snm);

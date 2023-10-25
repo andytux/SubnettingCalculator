@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SubnettingCalculator.Models;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -15,3 +16,15 @@ namespace SubnettingCalculater.View
     {
     }
 }
+
+
+//get{return subnetMask;}
+//set {
+//    if (subnetMask == value) return;
+//subnetmask = value;
+//try
+//{
+//    network = new Network(new IPAdress(IPAdress), new Subnetmask(Subnetmask));
+//    CidrSuffix = Network.Subnetmask.ToString();
+//    OnPropertyChanged();
+//}

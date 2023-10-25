@@ -3,12 +3,123 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:SubnettingCalculater.View"
+             xmlns:local="clr-namespace:SubnettingCalculater.View" xmlns:viewmodels="clr-namespace:SubnettingCalculator.ViewModels;assembly=SubnettingCalculator.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:IPCalculatorViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-        <TextBlock Text="IPCalulator-View"
+
+
+<Grid Background="White">
+        <Grid Background="White" Margin="20">
+            <Grid.ColumnDefinitions  >
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="300"/>
+                <ColumnDefinition Width="*"/>
+
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="IP-Adresse:" 
+                       Grid.Row="0" 
+                       Grid.Column="0" 
+                       Foreground="Black" 
+                       FontSize="20"
+                       Margin="5"
+                       VerticalAlignment="Center"/>
+            <TextBox Grid.Row="0" 
+                     Grid.Column="1" 
+                     Text="{Binding IpAddress, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     FontSize="20"
+                     Margin="5"
+                     VerticalAlignment="Center"/>
+            <StackPanel Grid.Row="0" 
+                        Grid.Column="2" 
+                        Orientation="Horizontal">
+                <TextBlock Grid.Row="0" 
+                           Grid.Column="2" 
+                           Text="\" 
+                           FontSize="20"
+                           VerticalAlignment="Center"
+                           Margin="5"/>
+                <TextBox Grid.Row="0" 
+                         Grid.Column="2" 
+                         Text="{Binding CidrSuffix}" 
+                         FontSize="20" 
+                         Width="50"
+                         VerticalAlignment="Center"
+                         Margin="5"/>
+            </StackPanel>
+            
+            <!--<TextBlock Grid.Row="0" Grid.Column="2" Text="\" Foreground="Black"/>-->
+            <TextBlock Text="Subnetzmaske:" 
+                       Grid.Row="1" 
+                       Grid.Column="0"
                        Foreground="Black"
-                       FontSize="28"/>
+                       FontSize="20"/>
+            <TextBox Text="{Binding SubnetMask, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                     Grid.Column="1"
+                     Grid.Row="1"
+                     FontSize="20"/>
+            
+            <TextBlock Text="Broadcast:"
+                       Grid.Row="2"
+                       Grid.Column="0"
+                       Foreground="Black"
+                       FontSize="20"/>
+            
+            <TextBlock Text="{Binding Network.BroadCast}" 
+                       Grid.Column="1" 
+                       Grid.Row="2"
+                       FontSize="20"/>
+
+            <TextBlock Text="Erster Host:" 
+                       Grid.Row="3" 
+                       Grid.Column="0"
+                       Foreground="Black"
+                       FontSize="20"/>
+            <TextBlock Text="{Binding Network.FirstHost}" 
+                       Grid.Column="1"  
+                       Grid.Row="3"
+                       FontSize="20"/>
+
+            <TextBlock Text="Letzter Host:" 
+                       Grid.Row="4" 
+                       Grid.Column="0"
+                       Foreground="Black"
+                       FontSize="20"/>
+            <TextBlock Text="{Binding Network.LastHost}" 
+                       Grid.Column="1" 
+                       Grid.Row="4"
+                       FontSize="20"/>
+
+            <TextBlock Text="Netzwerk ID:" 
+                       Grid.Row="5" 
+                       Grid.Column="0"
+                       Foreground="Black"
+                       FontSize="20"/>
+            <TextBlock Text="{Binding Network.NetID}" 
+                       Grid.Column="1" 
+                       Grid.Row="5"
+                       FontSize="20"/>
+
+            <TextBlock Text="Hosts max:" 
+                       Grid.Row="6" 
+                       Grid.Column="0"
+                       Foreground="Black"
+                       FontSize="20"/>
+            <TextBlock Text="{Binding Network.SumHosts}" 
+                       Grid.Column="1" 
+                       Grid.Row="6"
+                       FontSize="20"/>
+
+        </Grid>
     </Grid>
 </UserControl>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SubnettingCalculator.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace SubnettingCalculater.View
         public IpCalculatorView()
         {
             InitializeComponent();
+            this.DataContext = new IPCalculatorViewModel();
         }
     }
 }

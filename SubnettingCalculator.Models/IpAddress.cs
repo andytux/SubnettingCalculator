@@ -18,7 +18,7 @@ namespace SubnettingCalculator.Models
             Octets = OctetsStringToByteArray(octets);
         }
 
-        public static IpAddress operator &(IpAddress ipAddress, Subnetmask Subnetmask)
+        public static IpAddress operator &(IpAddress ipAddress, SubnetMask Subnetmask)
         {
             byte[] result = new byte[4];
 
@@ -29,7 +29,7 @@ namespace SubnettingCalculator.Models
             return new IpAddress(result);
         }
 
-        public static IpAddress operator |(IpAddress ipAddress, Subnetmask Subnetmask)
+        public static IpAddress operator |(IpAddress ipAddress, SubnetMask Subnetmask)
         {
             byte[] result = new byte[4];
 
