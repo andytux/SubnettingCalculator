@@ -14,6 +14,8 @@ namespace SubnettingCalculater.View
     /// </summary>
     public partial class App : Application
     {
+        //InitializeComponent();
+        //    this.DataContext = new IPCalculatorViewModel();
     }
 }
 

@@ -6,27 +6,27 @@ using System.Threading.Tasks;
 
 namespace SubnettingCalculator.Models;
 
-public class SubnetMask : BaseAddress
+public class SubnetMaskIPv4 : BaseAddressIPv4
 {
     public int CidrSuffix { get; set; }
 
-    public SubnetMask(byte[] octets)
+    public SubnetMaskIPv4(byte[] octets)
     {
         Octets = octets;
         CidrSuffix = GetSuffix(octets);
     }
 
-    public SubnetMask(byte[] octets, int cidrSuffix)
+    public SubnetMaskIPv4(byte[] octets, int cidrSuffix)
     {
         Octets = octets;
         CidrSuffix = cidrSuffix; 
     }
-    public SubnetMask(string octets)
+    public SubnetMaskIPv4(string octets)
     {
         Octets = base.OctetsStringToByteArray(octets);
         CidrSuffix = GetSuffix(Octets);
     }
-    public SubnetMask(int cidrSuffix)
+    public SubnetMaskIPv4(int cidrSuffix)
     {
         Octets = ConvertCidrSuffixToOctets(cidrSuffix);
         CidrSuffix = cidrSuffix;
@@ -138,7 +138,7 @@ public class SubnetMask : BaseAddress
         }
     }
 
-    public static SubnetMask operator ~(SubnetMask snm)
+    public static SubnetMaskIPv4 operator ~(SubnetMaskIPv4 snm)
     {
         byte[] result = new byte[4];
 
@@ -146,7 +146,7 @@ public class SubnetMask : BaseAddress
         {
             result[i] = (byte)~snm.Octets[i];
         }
-        return new SubnetMask(result, 0);
+        return new SubnetMaskIPv4(result, 0);
     }
 }
 

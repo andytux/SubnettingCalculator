@@ -1,6 +1,6 @@
 ﻿namespace SubnettingCalculator.Models;
 
-public abstract class BaseAddress
+public abstract class BaseAddressIPv4
 {
     public byte[] Octets { get; protected set; } = new byte[4];
 

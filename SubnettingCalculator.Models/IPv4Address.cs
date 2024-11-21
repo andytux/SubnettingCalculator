@@ -1,24 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SubnettingCalculator.Models
+﻿namespace SubnettingCalculator.Models
 {
-    public class IpAddress : BaseAddress
+    public class IPv4Address : BaseAddressIPv4
     {
-        public IpAddress(byte[] octets)
+        public IPv4Address(byte[] octets)
         {
             Octets = octets;
         }
 
-        public IpAddress(string octets)
+        public IPv4Address(string octets)
         {
             Octets = OctetsStringToByteArray(octets);
         }
 
-        public static IpAddress operator &(IpAddress ipAddress, SubnetMask Subnetmask)
+        public static IPv4Address operator &(IPv4Address ipAddress, SubnetMaskIPv4 Subnetmask)
         {
             byte[] result = new byte[4];
 
@@ -26,10 +20,10 @@ namespace SubnettingCalculator.Models
             {
                 result[i] = (byte)(ipAddress.Octets[i] & Subnetmask.Octets[i]);
             }
-            return new IpAddress(result);
+            return new IPv4Address(result);
         }
 
-        public static IpAddress operator |(IpAddress ipAddress, SubnetMask Subnetmask)
+        public static IPv4Address operator |(IPv4Address ipAddress, SubnetMaskIPv4 Subnetmask)
         {
             byte[] result = new byte[4];
 
@@ -37,10 +31,10 @@ namespace SubnettingCalculator.Models
             {
                 result[i] = (byte)(ipAddress.Octets[i] | Subnetmask.Octets[i]);
             }
-            return new IpAddress(result);
+            return new IPv4Address(result);
         }
 
-        public static IpAddress operator +(IpAddress netId, int value)
+        public static IPv4Address operator +(IPv4Address netId, int value)
         {
             byte[] result = new byte[netId.Octets.Length];
 
@@ -51,10 +45,10 @@ namespace SubnettingCalculator.Models
                 else
                     result[i] = (byte)netId.Octets[i];
             }
-            return new IpAddress(result);
+            return new IPv4Address(result);
         }
 
-        public static IpAddress operator -(IpAddress broadCastAddress, int value)
+        public static IPv4Address operator -(IPv4Address broadCastAddress, int value)
         {
             byte[] result = new byte[4];
 
@@ -65,7 +59,7 @@ namespace SubnettingCalculator.Models
                 else
                     result[i] = (byte)broadCastAddress.Octets[i];
             }
-            return new IpAddress(result);
+            return new IPv4Address(result);
         }
 
     }

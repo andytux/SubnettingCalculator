@@ -14,10 +14,10 @@ namespace SubnettingCalculator.Models.Tests
         [TestCase(new byte[] { 85, 45, 10, 0 }, new byte[] { 255, 255, 255, 240 }, new byte[] { 85, 45, 10, 0 })]
         public void NetIDTest(byte[] ipAddress, byte[] subnetmask, byte[] expected)
         {
-            IpAddress ip = new IpAddress(ipAddress);
-            SubnetMask snm = new SubnetMask(subnetmask);
+            IPv4Address ip = new IPv4Address(ipAddress);
+            SubnetMaskIPv4 snm = new SubnetMaskIPv4(subnetmask);
             
-            Network network = new Network(ip, snm);
+            NetworkIPv4 network = new NetworkIPv4(ip, snm);
             Assert.That(network.NetID.Octets, Is.EqualTo(expected));
         }
 
@@ -27,10 +27,10 @@ namespace SubnettingCalculator.Models.Tests
         [TestCase(new byte[] { 192, 168, 10, 0 }, new byte[] { 255, 255, 255, 0 }, new byte[] { 192, 168, 10, 255 })]
         public void BroadCastTest(byte[] ip, byte[] subnetmask, byte[] expected)
         {
-            IpAddress ipAdress = new IpAddress(ip);
-            SubnetMask snm = new SubnetMask(subnetmask);
+            IPv4Address ipAdress = new IPv4Address(ip);
+            SubnetMaskIPv4 snm = new SubnetMaskIPv4(subnetmask);
 
-            Network network = new Network(ipAdress, snm);
+            NetworkIPv4 network = new NetworkIPv4(ipAdress, snm);
             Assert.That(network.BroadCast.Octets, Is.EqualTo(expected));
         }
 
@@ -39,11 +39,11 @@ namespace SubnettingCalculator.Models.Tests
         [TestCase(new byte[] { 85, 45, 10, 0 }, new byte[] { 255, 255, 255, 240 }, new byte[] { 85, 45, 10, 1 })]
         public void FirstIPTest(byte[] ip, byte[] subnetmask, byte[] expected)
         {
-            IpAddress ipAdress = new IpAddress(ip);
-            SubnetMask snm = new SubnetMask(subnetmask);
+            IPv4Address ipAdress = new IPv4Address(ip);
+            SubnetMaskIPv4 snm = new SubnetMaskIPv4(subnetmask);
 
 
-            Network network = new Network(ipAdress, snm);
+            NetworkIPv4 network = new NetworkIPv4(ipAdress, snm);
             Assert.That(network.FirstHost.Octets, Is.EqualTo(expected));
         }
         [TestCase(new byte[] { 192, 168, 0, 1 }, new byte[] { 255, 255, 255, 0 }, new byte[] { 192, 168, 0, 254 })]
@@ -51,11 +51,11 @@ namespace SubnettingCalculator.Models.Tests
         [TestCase(new byte[] { 85, 45, 10, 0 }, new byte[] { 255, 255, 255, 240 }, new byte[] { 85, 45, 10, 14 })]
         public void LastIPTest(byte[] ip, byte[] subnetmask, byte[] expected)
         {
-            IpAddress ipAdress = new IpAddress(ip);
-            SubnetMask snm = new SubnetMask(subnetmask);
+            IPv4Address ipAdress = new IPv4Address(ip);
+            SubnetMaskIPv4 snm = new SubnetMaskIPv4(subnetmask);
 
 
-            Network network = new Network(ipAdress, snm);
+            NetworkIPv4 network = new NetworkIPv4(ipAdress, snm);
             Assert.That(network.LastHost.Octets, Is.EqualTo(expected));
         }
 
@@ -64,11 +64,11 @@ namespace SubnettingCalculator.Models.Tests
         [TestCase(new byte[] { 85, 45, 10, 0 }, new byte[] { 255, 255, 255, 240 }, 14)]
         public void SumOfHosts(byte[] ip, byte[] subnetmask,int expected)
         {
-            IpAddress ipAdress = new IpAddress(ip);
-            SubnetMask snm = new SubnetMask(subnetmask);
+            IPv4Address ipAdress = new IPv4Address(ip);
+            SubnetMaskIPv4 snm = new SubnetMaskIPv4(subnetmask);
 
 
-            Network network = new Network(ipAdress, snm);
+            NetworkIPv4 network = new NetworkIPv4(ipAdress, snm);
             Assert.That(network.SumHosts, Is.EqualTo(expected));
         }
 
